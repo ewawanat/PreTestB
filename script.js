@@ -16,6 +16,20 @@ function save() {
 		localStorage.setItem(key, tElement.value)
 	}
 }
+
+function upfile(){
+  var b = document.createElement('p');
+  b.innerHTML = 'Now, please click \'Upload\' to save the file to Dropbox. <br> Please enter your participant ID which was given to you at the start as your first name, and \'test@test.com\' as your email  address <br>';
+  document.body.appendChild(b);
+  var c = document.createElement('a');
+  c.innerHTML = 'Upload';
+  c.href = 'https://www.dropbox.com/request/Dk5LZXlusQWf6L6ZCXWj?oref=e';
+  document.body.appendChild(c);
+  var d = document.createElement('h3')
+  d.innerHTML = 'Thank you for participating in the study!'
+  document.body.appendChild(d)
+}
+
 function read() {
 	csvRows = [];
 	myKeys = [];
@@ -36,7 +50,8 @@ function read() {
 	a.innerHTML = "Download";
 	a.href     = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csvString);
 	a.target   = '_blank';
-	a.download = 'resutls.csv';
+	a.download = 'results.csv';
+  a.onclick = function() {upfile()};
 	document.body.appendChild(a);
 }
 
